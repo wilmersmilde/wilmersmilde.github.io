@@ -1,0 +1,222 @@
+/* =====================================================================
+   THE KNOBS — this is the only block you need to edit to retheme.
+   Every colour, space and column width used anywhere on the site is
+   defined here. Nothing below this block hard-codes a colour or a size.
+   ===================================================================== */
+:root {
+  /* Colours */
+  --color-bg:      #fcfcfa;   /* page background */
+  --color-text:    #191a18;   /* body text */
+  --color-muted:   #5c5e59;   /* metadata, captions, minor sections */
+  --color-rule:    #dedfd8;   /* hairlines and borders */
+  --color-panel:   #f1f3ed;   /* tinted feature panel */
+  --color-accent:  #24578c;   /* links and the feature panel's edge */
+  --color-focus:   #b8651b;   /* keyboard focus ring, kept distinct from links */
+
+  /* Type */
+  --font-body: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, "Times New Roman", serif;
+  --font-meta: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  --size-base: 1.0625rem;
+  --leading: 1.65;
+
+  /* Spacing scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.875rem;
+  --space-4: 1.5rem;
+  --space-5: 2.5rem;
+  --space-6: 4rem;
+
+  /* Layout */
+  --measure: 70ch;          /* prose column: index, research, writing */
+  --measure-narrow: 62ch;   /* prose column: exposition.html */
+  --gutter: 1.25rem;        /* left/right page padding */
+}
+
+/* Dark mode overrides the knobs and nothing else. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg:     #16181a;
+    --color-text:   #e7e8e4;
+    --color-muted:  #a0a39c;
+    --color-rule:   #2e3134;
+    --color-panel:  #1e2124;
+    --color-accent: #8fb8e8;
+    --color-focus:  #e2a05a;
+  }
+}
+
+/* ============================ BASE ================================== */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font: var(--size-base)/var(--leading) var(--font-body);
+  -webkit-text-size-adjust: 100%;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+h1, h2, h3 { line-height: 1.25; font-weight: 600; }
+h1 { font-size: 1.9rem;  margin: 0 0 var(--space-3); }
+h2 { font-size: 1.3rem;  margin: 0 0 var(--space-3); }
+h3 { font-size: 1.05rem; margin: var(--space-4) 0 var(--space-2); }
+p  { margin: 0 0 var(--space-3); }
+p:last-child { margin-bottom: 0; }
+
+/* ======================= LINKS AND FOCUS ============================ */
+a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  text-decoration-thickness: 1px;
+}
+a:hover { text-decoration-thickness: 2px; }
+
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.skip-link { position: absolute; left: -9999px; font-family: var(--font-meta); }
+.skip-link:focus {
+  position: static;
+  display: inline-block;
+  margin: var(--space-2) var(--gutter);
+}
+
+/* ===================== LAYOUT CONTAINERS ============================ */
+.page {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+.page--narrow { max-width: var(--measure-narrow); }
+
+main { padding: var(--space-5) 0 var(--space-6); }
+main > section { margin-top: var(--space-6); }
+main > section:first-child { margin-top: 0; }
+article > section { margin-top: var(--space-5); }
+
+/* ========================= NAVIGATION =============================== */
+.site-header { border-bottom: 1px solid var(--color-rule); }
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-2) var(--space-4);
+  padding-top: var(--space-3);
+  padding-bottom: var(--space-3);
+}
+.nav__name {
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: 1.05rem;
+}
+.nav__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-meta);
+  font-size: 0.9rem;
+}
+.nav__links [aria-current="page"] { color: var(--color-text); }
+
+/* ================== MASTHEAD (photo + identity) ===================== */
+/* Wraps on its own: below ~600px the photo lands above the text. */
+.masthead {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4) var(--space-5);
+  align-items: flex-start;
+}
+.masthead__photo { flex: 0 0 auto; width: 280px; }
+.masthead__id { flex: 1 1 12rem; min-width: 0; }
+.masthead__meta {
+  font-family: var(--font-meta);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--color-muted);
+}
+
+/* ======================= FEATURE PANEL ============================== */
+.feature {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  align-items: flex-start;
+  padding: var(--space-4);
+  background: var(--color-panel);
+  border: 1px solid var(--color-rule);
+  border-left: 3px solid var(--color-accent);
+}
+.feature:hover { border-color: var(--color-accent); }
+.feature__figure { flex: 0 1 40%; min-width: 11rem; margin: 0; }
+.feature__body { flex: 1 1 15rem; min-width: 0; }
+.feature__more { font-family: var(--font-meta); font-size: 0.9rem; }
+
+/* ============ ENTRY LISTS (papers, talks, notes, courses) =========== */
+.entries { list-style: none; margin: 0; padding: 0; }
+.entry {
+  padding: var(--space-3) 0;
+  border-top: 1px solid var(--color-rule);
+}
+.entry:first-child { border-top: 0; padding-top: 0; }
+.entry__title { margin-bottom: var(--space-1); font-weight: 600; }
+.entry__meta {
+  margin-bottom: var(--space-1);
+  font-family: var(--font-meta);
+  font-size: 0.9rem;
+  color: var(--color-muted);
+}
+.keywords { font-family: var(--font-meta); font-size: 0.9rem; color: var(--color-muted); }
+
+/* ============ MINOR SECTIONS (teaching, service, elsewhere) ========= */
+.minor { font-size: 0.95rem; color: var(--color-muted); }
+.minor h2 { font-size: 1.05rem; color: var(--color-text); }
+.minor ul { margin: 0; padding-left: 1.1rem; }
+.minor li { margin-bottom: var(--space-1); }
+main > .minor { margin-top: var(--space-5); }
+
+/* ==================== ARTICLE AND FIGURES =========================== */
+.standfirst { font-size: 1.15rem; color: var(--color-muted); margin-bottom: var(--space-5); }
+figure { margin: var(--space-5) 0; }
+figcaption {
+  margin-top: var(--space-2);
+  font-family: var(--font-meta);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--color-muted);
+}
+.back-link { margin-top: var(--space-5); font-family: var(--font-meta); font-size: 0.9rem; }
+/* Long display equations scroll inside their own box, not the page. */
+.katex-display { overflow-x: auto; overflow-y: hidden; padding: 0.2em 0; }
+
+/* ============================ FOOTER ================================ */
+.site-footer {
+  border-top: 1px solid var(--color-rule);
+  padding: var(--space-4) 0 var(--space-5);
+  font-family: var(--font-meta);
+  font-size: 0.85rem;
+  color: var(--color-muted);
+}
+
+/* ========================== NARROW SCREENS ========================== */
+@media (max-width: 600px) {
+  :root { --gutter: 1rem; }
+  h1 { font-size: 1.6rem; }
+  h2 { font-size: 1.2rem; }
+  .nav { gap: var(--space-1) var(--space-3); }
+  .nav__links { gap: var(--space-1) var(--space-3); }
+  .masthead__photo { width: 100%; max-width: 280px; }
+  .masthead__id { flex-basis: 100%; }
+  .feature__figure, .feature__body { flex-basis: 100%; }
+}
