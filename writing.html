@@ -1,5 +1,99 @@
 <!DOCTYPE html>
-<html>
-<head><title>Writing</title></head>
-<body><h1>Webpage under construction</h1></body>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ PAGE TITLE — e.g. "Writing — Jordan Rivera" }}</title>
+  <meta name="description" content="{{ META DESCRIPTION — one sentence: expository writing, lecture notes and teaching materials. }}">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <nav class="nav page" aria-label="Primary">
+    <a class="nav__name" href="index.html">{{ YOUR NAME }}</a>
+    <ul class="nav__links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="writing.html" aria-current="page">Writing</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main" class="page">
+
+  <section>
+    <h1>{{ PAGE HEADING — e.g. "Writing" }}</h1>
+    <p>{{ INTRO — one or two sentences on what you write and who it is for.
+       Optional: delete this paragraph. }}</p>
+  </section>
+
+  <!-- ===================== EXPOSITORY WRITING ===================== -->
+  <section class="feature" aria-labelledby="exposition-heading">
+    <figure class="feature__figure">
+      <!-- Same figure as the home page, or a different one. Export at ~640px wide. -->
+      <img src="images/feature.jpg"
+           alt="{{ ALT TEXT: describe what the figure shows, in a sentence }}"
+           width="640" height="480">
+    </figure>
+    <div class="feature__body">
+      <h2 id="exposition-heading"><a href="exposition.html">{{ FEATURE TITLE — same title as on the home page }}</a></h2>
+      <p>{{ SHORT DESCRIPTION — two sentences on what the piece covers and who it is for. }}</p>
+      <p class="feature__more"><a href="exposition.html">Read more →</a></p>
+    </div>
+  </section>
+
+  <!-- ===================== LECTURE NOTES ===================== -->
+  <section aria-labelledby="notes-heading">
+    <h2 id="notes-heading">Lecture notes</h2>
+    <ul class="entries">
+
+      <!-- Repeat this block for each set of notes -->
+      <li class="entry">
+        <p class="entry__title"><a href="{{ NOTES LINK — PDF path or URL }}">{{ NOTES TITLE }}</a></p>
+        <p class="entry__meta">{{ COURSE, LEVEL AND TERM — e.g. "Riemannian Geometry, MSc, Spring 2026" }}</p>
+        <p>{{ SHORT DESCRIPTION — one or two sentences on what the notes cover. }}</p>
+      </li>
+      <!-- End notes block -->
+
+      <li class="entry">
+        <p class="entry__title"><a href="{{ NOTES LINK }}">{{ NOTES TITLE }}</a></p>
+        <p class="entry__meta">{{ COURSE, LEVEL AND TERM }}</p>
+        <p>{{ SHORT DESCRIPTION }}</p>
+      </li>
+
+    </ul>
+  </section>
+
+  <!-- ===================== TEACHING MATERIALS ===================== -->
+  <section aria-labelledby="materials-heading">
+    <h2 id="materials-heading">Teaching materials</h2>
+    <ul class="entries">
+
+      <!-- Repeat this block for each item -->
+      <li class="entry">
+        <p class="entry__title"><a href="{{ MATERIAL LINK }}">{{ MATERIAL TITLE — e.g. "Problem sheets, Differential Geometry I" }}</a></p>
+        <p>{{ SHORT DESCRIPTION — one sentence. }}</p>
+      </li>
+      <!-- End materials block -->
+
+      <li class="entry">
+        <p class="entry__title"><a href="{{ MATERIAL LINK }}">{{ MATERIAL TITLE }}</a></p>
+        <p>{{ SHORT DESCRIPTION }}</p>
+      </li>
+
+    </ul>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="page">
+    <p>{{ LAST UPDATED — e.g. "Last updated: March 2026" }}</p>
+  </div>
+</footer>
+
+</body>
 </html>
