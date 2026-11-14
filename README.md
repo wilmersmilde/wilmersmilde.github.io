@@ -1,4 +1,4 @@
-# Personal academic website
+# Personal academic website (created with Claude)
 
 Four static pages, one stylesheet, no build step. Nothing here needs to be
 compiled, installed or run — the files you edit are the files that get served.
